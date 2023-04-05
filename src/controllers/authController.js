@@ -81,6 +81,38 @@ module.exports = {
     }
   },
 
+  async changePassword(req, res) {
+    const { currentPassword, newPassword } = req.body;
+
+    try {
+      const userPasswordQuery = await pool.query(
+        'SELECT u.password FROM users u WHERE u.id = $1',
+        [req.user.id]
+      );
+
+      const validPassword = await bcrypt.compare(
+        currentPassword,
+        userPasswordQuery.rows[0].password
+      );
+
+      if (!validPassword) {
+        return res.status(401).json('Current password provided is wrong');
+      }
+
+      const salt = await bcrypt.genSalt(10);
+      const newPasswordEncrypted = await bcrypt.hash(newPassword, salt);
+
+      await pool.query('UPDATE users SET password = $1 WHERE id = $2', [
+        newPasswordEncrypted,
+        req.user.id,
+      ]);
+
+      res.status(200).send();
+    } catch (err) {
+      res.status(500).send('Server error');
+    }
+  },
+
   refreshToken(req, res) {
     const accessToken = generateAccessToken(req.user.id);
     const newRefreshToken = generateRefreshToken(req.user.id);

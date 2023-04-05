@@ -15,6 +15,12 @@ router.post('/login', validateInfo, authController.signinUser);
 
 router.post('/refresh-token', verifyRefreshToken, authController.refreshToken);
 
+router.post(
+  '/change-password',
+  verifyAccessToken,
+  authController.changePassword
+);
+
 router.get('/verify', verifyAccessToken, authController.verify);
 
 module.exports = router;
