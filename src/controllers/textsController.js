@@ -10,6 +10,21 @@ module.exports = {
 
       res.json(userTexts.rows);
     } catch (err) {
+      res.status(500).send(err);
+    }
+  },
+
+  async show(req, res) {
+    try {
+      const textId = req.params.id;
+
+      const userTexts = await pool.query(
+        'SELECT t.id, t.title, t.content FROM texts t INNER JOIN users u ON t.user_id = u.id WHERE t.user_id = $1 AND t.id = $2',
+        [req.user.id, textId]
+      );
+
+      res.json(userTexts.rows[0]);
+    } catch (err) {
       res.status(500).send('Server error');
     }
   },
