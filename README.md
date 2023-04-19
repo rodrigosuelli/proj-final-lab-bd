@@ -5,7 +5,7 @@ Api REST de textos com autenticação JWT - Projeto Final da Disciplina de Lab. 
 ## Instalando as dependências
 
 ```bash
-psql -h localhost -U postgres postgres
+npm install
 ```
 
 ## Criando o banco de dados
