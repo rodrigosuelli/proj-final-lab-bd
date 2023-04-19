@@ -124,7 +124,7 @@ module.exports = {
 
   verify(req, res) {
     try {
-      res.json(true);
+      res.json({ isAuthenticated: true });
     } catch (err) {
       res.status(500).send('Server error');
     }
