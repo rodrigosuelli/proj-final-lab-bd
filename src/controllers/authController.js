@@ -96,7 +96,9 @@ module.exports = {
       );
 
       if (!validPassword) {
-        return res.status(401).json('Current password provided is wrong');
+        return res
+          .status(401)
+          .json({ msg: 'Current password provided is wrong' });
       }
 
       const salt = await bcrypt.genSalt(10);
