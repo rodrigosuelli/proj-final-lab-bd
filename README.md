@@ -7,7 +7,7 @@ Api REST de textos com autenticação JWT - Projeto Final da Disciplina de Lab. 
 Access psql inside github codespaces
 
 ```bash
-psql -h localhost postgres
+psql -h localhost -U postgres postgres
 ```
 
 Rode os seguintes comandos através do psql para criar ao banco de dados
