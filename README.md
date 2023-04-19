@@ -13,11 +13,11 @@ psql -h localhost -U postgres postgres
 Rode os seguintes comandos através do psql para criar ao banco de dados
 
 ```sql
-# Cria o banco de dados ditey_api
-$ CREATE DATABASE ditey_api;
+# Cria o banco de dados proj_final_lab_bd
+$ CREATE DATABASE proj_final_lab_bd;
 
-# Se conecta ao banco ditey_api
-$ \c ditey_api
+# Se conecta ao banco proj_final_lab_bd
+$ \c proj_final_lab_bd
 
 # Instala a extensão uuid-ossp no banco, necessária para gerar o UUID do usuário e criar a tabela users
 $ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
