@@ -16,7 +16,7 @@ module.exports = {
       ]);
 
       if (user.rows.length > 0) {
-        return res.status(401).json('User already exist!');
+        return res.status(401).json({ msg: 'User already exist!' });
       }
 
       const salt = await bcrypt.genSalt(10);
