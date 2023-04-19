@@ -22,6 +22,9 @@ Rode os seguintes comandos através do psql para criar ao banco de dados
 # Cria o banco de dados proj_final_lab_bd
 CREATE DATABASE proj_final_lab_bd;
 
+# Lista os bancos de dados criados
+\l
+
 # Se conecta ao banco proj_final_lab_bd
 \c proj_final_lab_bd
 
