@@ -2,10 +2,10 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 module.exports = {
-  generateAccessToken(user_id) {
+  generateAccessToken(userId) {
     const payload = {
       user: {
-        id: user_id,
+        id: userId,
       },
     };
 
@@ -14,10 +14,10 @@ module.exports = {
     });
   },
 
-  generateRefreshToken(user_id) {
+  generateRefreshToken(userId) {
     const payload = {
       user: {
-        id: user_id,
+        id: userId,
       },
     };
 
