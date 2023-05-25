@@ -1,19 +1,13 @@
 const { Pool } = require('pg');
 
-const devConfig = {
+// Instancia a biblioteca para usar o banco de dados Postgresql
+const pool = new Pool({
   user: process.env.PGUSER,
   host: process.env.PGHOST,
   database: process.env.PGDATABASE,
   password: process.env.PGPASSWORD,
   port: process.env.PGPORT,
-};
+});
 
-const prodConfig = {
-  connectionString: process.env.DATABASE_URL,
-};
-
-const pool = new Pool(
-  process.env.NODE_ENV === 'production' ? prodConfig : devConfig
-);
-
+// Exporta o objeto pool para que possamos usá-lo em outros arquivos para rodar consultas e comandos no banco de dados
 module.exports = pool;
